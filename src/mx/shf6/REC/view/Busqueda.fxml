@@ -16,12 +16,12 @@
          <children>
             <HBox alignment="CENTER" layoutY="350.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                <children>
-                  <Button fx:id="botonAsistencia" layoutX="425.0" layoutY="556.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="buttonBlue" text="ASISTENCIA" textFill="#ffffffd9">
+                  <Button fx:id="botonAsistencia" layoutX="425.0" layoutY="556.0" mnemonicParsing="false" onAction="#asistenciaVisitante" prefHeight="30.0" prefWidth="150.0" styleClass="buttonBlue" text="ASISTENCIA" textFill="#ffffffd9">
                      <font>
                         <Font name="Open Sans Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="botonRegistrar" layoutX="517.0" layoutY="556.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="buttonGreen" text="REGISTRAR" textFill="#ffffffd9">
+                  <Button fx:id="botonRegistrar" layoutX="517.0" layoutY="556.0" mnemonicParsing="false" onAction="#registrarVisitante" prefHeight="30.0" prefWidth="150.0" styleClass="buttonGreen" text="REGISTRAR" textFill="#ffffffd9">
                      <font>
                         <Font name="Open Sans Bold" size="12.0" />
                      </font>
@@ -38,7 +38,7 @@
                         <HBox>
                            <children>
                               <TextField fx:id="campoBusqueda" prefHeight="30.0" styleClass="textFieldSesion" HBox.hgrow="ALWAYS" />
-                              <Button fx:id="botonBusqueda" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" styleClass="buttonYellow" text="BUSCAR">
+                              <Button fx:id="botonBusqueda" mnemonicParsing="false" onAction="#buscarVisitante" prefHeight="30.0" prefWidth="100.0" styleClass="buttonYellow" text="BUSCAR">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>

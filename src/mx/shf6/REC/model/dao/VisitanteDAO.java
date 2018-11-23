@@ -121,7 +121,7 @@ public class VisitanteDAO implements ObjectDAO {
 
 	@Override
 	public boolean modificar(Connection connection, String correo) {
-		String query = "UPDATE visitantes SET fechaRegis asistencia = 1 WHERE email = ?";
+		String query = "UPDATE visitantes SET fechaRegistro = curdate(), asistencia = 1 WHERE email = ?";
 		try {		
 			PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);
 			preparedStatement.setString(1, correo);

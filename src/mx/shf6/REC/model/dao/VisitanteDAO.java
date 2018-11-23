@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 import mx.shf6.REC.model.Visitante;
 import mx.shf6.REC.utilities.Notificacion;
@@ -38,10 +37,9 @@ public class VisitanteDAO implements ObjectDAO {
 	}//FIN METODO
 	
 	@Override
-	public ArrayList<Object> leer(Connection connection, String campoBusqueda, String valorBusqueda) {
+	public Visitante leer(Connection connection, String campoBusqueda, String valorBusqueda) {
 		String query ="";
 		Visitante visitante = new Visitante();
-		ArrayList<Object> listaVisitantes = new ArrayList<Object>();
 		if(campoBusqueda.isEmpty() && valorBusqueda.isEmpty()) {
 			query="SELECT * FROM visitantes ORDER BY apellidoPaterno;";
 			try {
@@ -61,7 +59,6 @@ public class VisitanteDAO implements ObjectDAO {
 					visitante.setEstado(resultSet.getString(10));
 					visitante.setMunicipio(resultSet.getString(11));
 					visitante.setEmail(resultSet.getString(12));
-					listaVisitantes.add(visitante);
 				}//FIN WHILE
 			}catch (SQLException e) {
 				Notificacion.dialogoException(e);
@@ -89,7 +86,6 @@ public class VisitanteDAO implements ObjectDAO {
 						visitante.setEstado(resultSet.getString(10));
 						visitante.setMunicipio(resultSet.getString(11));
 						visitante.setEmail(resultSet.getString(12));
-						listaVisitantes.add(visitante);
 					}//FIN WHILE
 				}catch (SQLException e) {
 					Notificacion.dialogoException(e);
@@ -114,21 +110,28 @@ public class VisitanteDAO implements ObjectDAO {
 						visitante.setEstado(resultSet.getString(10));
 						visitante.setMunicipio(resultSet.getString(11));
 						visitante.setEmail(resultSet.getString(12));
-						listaVisitantes.add(visitante);
 					}//FIN WHILE
 				}catch (SQLException e) {
 					Notificacion.dialogoException(e);
 				}//FIN TRY-CATCH
 			}//FIN IF-ELSE		
 		}//FIN IF-ELSE
-		return listaVisitantes;
+		return visitante;
 	}//FIN METODO
 
 	@Override
-	public boolean modificar(Connection connection, Object objeto) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public boolean modificar(Connection connection, String correo) {
+		String query = "UPDATE visitantes SET fechaRegistro = curdate(), asistencia = 1 WHERE email = ?";
+		try {		
+			PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);
+			preparedStatement.setString(1, correo);
+			preparedStatement.execute();
+			return true;
+		} catch (SQLException e) {
+			Notificacion.dialogoException(e);
+			return false;
+		}//FIN TRY-CATCH
+	}//FIN METODO
 
 	@Override
 	public boolean eliminar(Connection connection, Object objeto) {

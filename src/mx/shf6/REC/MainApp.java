@@ -4,103 +4,114 @@ import java.io.IOException;
 import java.sql.Connection;
 
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import mx.shf6.REC.utilities.ConnectionDB;
-import mx.shf6.REC.utilities.LeerArchivo;
-import mx.shf6.REC.view.Busqueda;
+import mx.shf6.REC.utilities.Notificacion;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 
 
 public class MainApp extends Application {
 	
-	//Pantallas
-	private Stage primaryStage;
-    private BorderPane rootLayout;  
-    public static ConnectionDB connectionDB;
-	public static Connection mysqlConnection;
-    
-    
-      
-	//LISTA OOBSERVABLE PARA ALMACENAR A LOS USUARIOS
-    private ObservableList<Venta> ventaData = FXCollections.observableArrayList();
+	//PROPIEDADES
+	private Connection connection;
+	private ConnectionDB connectionDB;
+	
+	//PANTALLAS DEL SISTEMA
+	private Stage principalStage;
+	private BorderPane pantallaRaiz;
+	private AnchorPane pantallaBusqueda;
+	
+	//VARIABLES
+	private double xOffset = 0.0;
+	private double yOffset = 0.0;
 
-    //CONSTRUCTOR
-    public MainApp() { 
-    	//EXTRACCION DE TODAS LAS VENTAS DE LA BASE DE DATOS
-       // VentaDAO ventaDAO = new VentaDAO();
-       // ArrayList <Object> resultadoSelect = ventaDAO.leer(connectionDB.conectarMySQL(), "", "");           
-    	//for(Object venta :resultadoSelect) {
-    	//	ventaData.add((Venta) venta);
-    	//}
-    }//FIN CONSTRUCTOR
-    
     //INICIACION DE ESCENARIO
     @Override
     public void start(Stage primaryStage) {
     	//INICIO DE LA CONEXION DE LA BASE DE DATOS
-    	LeerArchivo.leerArchivo();
-    	connectionDB = new ConnectionDB(LeerArchivo.nameDB, LeerArchivo.hostDB, LeerArchivo.userDB, LeerArchivo.passwordDB);
-		mysqlConnection = connectionDB.conectarMySQL();
-        this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Expo CANADEVI 2018 | Registro by Shift F6");
-        initRootLayout();
-        showBusqueda();
+    	this.connectionDB = new ConnectionDB("canadevi","104.254.247.249","Canadevi","&0Ab@Mohjirp");
+		this.connection = connectionDB.conectarMySQL();
+		
+		//INICIA EL ESENARIO PRINCIPAL
+		this.principalStage = primaryStage;
+		this.principalStage.setMaximized(false);
+		this.principalStage.setResizable(false);
+		this.principalStage.initStyle(StageStyle.TRANSPARENT);
+		
+		//INICIA LA INTERFAZ DE USUARIO
+		iniciarPantallaRaiz();
+		iniciarPantallaBusqueda();
     }//FIN METODO
     
-    //INICIACION DE ROOTLAYOUT
-    public void initRootLayout() {
-        try {
-            // CARGA EL ROOT LAYOUT DEL ALCHIVO FMX
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
-            rootLayout = (BorderPane) loader.load();            
-            //MUESTRA EL CONTENIDO DEL ROOT LAYOUT.
-            Scene scene = new Scene(rootLayout);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }//FIN TRY-CATCH
-    }//FIN METODO
+	//INICIAR PANE RAIZ
+	private void iniciarPantallaRaiz() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader();
+			fxmlLoader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
+			pantallaRaiz = (BorderPane) fxmlLoader.load();
+			Scene principalEscena = new Scene(pantallaRaiz);
+			principalEscena.setFill(Color.TRANSPARENT);
+			this.principalStage.setScene(principalEscena);
+			this.principalStage.show();
+			
+			//CENTRAR VENTANA EN PANTALLA
+			Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+			this.principalStage.setX((primaryScreenBounds.getWidth() - this.principalStage.getWidth()) / 2);
+			this.principalStage.setY((primaryScreenBounds.getHeight() - this.principalStage.getHeight()) / 2);
+		} catch (IOException | IllegalStateException ex) {
+			Notificacion.dialogoException(ex);
+		}//FIN TRY/CATCH
+	}//FIN METODO
     
-    //MUESTRA LA INTERFAZ DE GESTOR DE USUARIO
-    public void showBusqueda() {
-        try {
-            //CARGA EL GESTOR DE USUARIO DEL ARCHIVO FMXL
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/Busqueda.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
+	//INICIAR PANE PANTALLA BUSQUEDA
+	public void iniciarPantallaBusqueda() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader();
+			fxmlLoader.setLocation(MainApp.class.getResource("view/Busqueda.fxml"));
+			this.pantallaBusqueda = (AnchorPane) fxmlLoader.load();
+			
+			//SELECCIONAR VENTANA PARA MOVER
+			this.pantallaBusqueda.setOnMousePressed(new EventHandler<MouseEvent>() {
+	            @Override
+	            public void handle(MouseEvent event) {
+	                xOffset = principalStage.getX() - event.getScreenX();
+	                yOffset = principalStage.getY() - event.getScreenY();
+	            }//FIN METODO
+	        }); //FIN MOUSE HANDLER
+			
+			//MOVER VENTANA ARRASTRANDO
+			this.pantallaBusqueda.setOnMouseDragged(new EventHandler<MouseEvent>() {
+	            @Override
+	            public void handle(MouseEvent event) {
+	            	principalStage.setX(event.getScreenX() + xOffset);
+	            	principalStage.setY(event.getScreenY() + yOffset);
+	            }//FIN METODO
+	        });//FIN MOUSE HANDLER
+			
+			this.pantallaRaiz.setCenter(this.pantallaBusqueda);
+			this.pantallaRaiz.setTop(null);
+			this.pantallaRaiz.setLeft(null);
+			
+			//Busqueda pantallaEspera = fxmlLoader.getController();
+			//pantallaEspera.setMainApp(this);
+		} catch (IOException | IllegalStateException ex) {
+			Notificacion.dialogoException(ex);
+		}//FIN TRY/CATCH
+	}//FIN METODO
             
-            //ENVIA EL GESTOR DE USUARIO AL CENTRO DEL ROOT LAYOUT
-            rootLayout.setCenter(personOverview);
-            
-            //SE OBTIENE EL ACCESO DEL CONTROLADOR AL MAIN APP
-            Busqueda controller = loader.getController();
-            controller.setMainApp(this);            
-        } catch (IOException e) {
-            e.printStackTrace();
-        }//FIN TRY/CATCH
-    }//FIN METODO
-            
-    //REGRESA EL MAIN STAGE
-    public Stage getPrimaryStage() {
-    	return primaryStage;
-    }//FIN METODO
-    
   //METODOS DE ACCESO A VARIABLE "CONNECTION"
   	public Connection getConnection() {
-  		return MainApp.mysqlConnection;
+  		return this.connection;
   	}//FIN METODO
-    
-    //REGRESA LOS DATOS EN UNA LISTA OBSERVABLE DE USUARIOS
-    public ObservableList<Venta> getVentaData() {
-    	return ventaData;
-    }//FIN METODO
     
     public static void main(String[] args) {
         launch(args);

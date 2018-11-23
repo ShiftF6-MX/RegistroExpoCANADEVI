@@ -42,7 +42,7 @@ public class Busqueda {
 	//INICIALIZA LOS COMPOMENTES QUE SE CONTROLAN EN LA INTERFAZ DE USUARIO
     @FXML
     private void initialize() {
-    	this.cliente = new Cliente();
+    	this.cliente = new Visitante();
     	this.venta = new Venta();
     	this.detalleVenta = new DetalleVenta();
     	this.clienteDAO = new ClienteDAO();
@@ -238,7 +238,7 @@ public class Busqueda {
     @FXML
     private void cambiarCliente() {
 		ArrayList <Object> resultadoCliente = clienteDAO.leer(mainApp.getConnection(), "nombre", clientesCombo.getValue());
-		cliente= (Cliente) resultadoCliente.get(0);
+		cliente= (Visitante) resultadoCliente.get(0);
     	venta = tablaVenta.getSelectionModel().getSelectedItem();    	
     	ventaDAO.modificarCliente(mainApp.getConnection(), venta, cliente.getSysPk());
     	tablaVenta.getItems().clear();
@@ -344,7 +344,7 @@ public class Busqueda {
         tablaVenta.setItems(mainApp.getVentaData());
         ArrayList <Object> resultadoSelect = clienteDAO.leer(mainApp.getConnection(), "", "");           
     	for(Object cliente :resultadoSelect) {
-    		clientesData.add(((Cliente) cliente).getNombre());
+    		clientesData.add(((Visitante) cliente).getNombre());
     	}//FIN FOR
     	clientesCombo.setItems(clientesData); 
     }//FIN METODO

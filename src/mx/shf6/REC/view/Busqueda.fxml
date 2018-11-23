@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mx.shf6.SMB.view.Busqueda">
+   <children>
+      <HBox layoutX="52.0" layoutY="52.0" prefHeight="25.0" prefWidth="366.0">
+         <children>
+            <TextField prefHeight="25.0" prefWidth="251.0" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0" text="Buscar">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <VBox layoutX="52.0" layoutY="110.0" prefHeight="57.0" prefWidth="221.0">
+         <children>
+            <Label text="Nombre(s)" />
+            <TextField>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </TextField>
+         </children>
+      </VBox>
+      <VBox layoutX="52.0" layoutY="176.0" prefHeight="57.0" prefWidth="221.0">
+         <children>
+            <Label text="Apellido Paterno" />
+            <TextField>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </TextField>
+         </children>
+      </VBox>
+      <VBox layoutX="52.0" layoutY="251.0" prefHeight="57.0" prefWidth="221.0">
+         <children>
+            <Label text="Apellido Materno" />
+            <TextField>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </TextField>
+         </children>
+      </VBox>
+      <VBox layoutX="52.0" layoutY="327.0" prefHeight="57.0" prefWidth="221.0">
+         <children>
+            <Label text="Fecha" />
+            <DatePicker>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </DatePicker>
+         </children>
+      </VBox>
+      <VBox layoutX="52.0" layoutY="403.0" prefHeight="57.0" prefWidth="221.0">
+         <children>
+            <Label text="Número de Seguro Social" />
+            <TextField>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </TextField>
+         </children>
+      </VBox>
+      <VBox layoutX="392.0" layoutY="126.0" prefHeight="57.0" prefWidth="221.0">
+         <children>
+            <Label text="Tipo Crédito" />
+            <ComboBox prefHeight="25.0" prefWidth="233.0">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </ComboBox>
+         </children>
+      </VBox>
+      <VBox layoutX="385.0" layoutY="205.0" prefHeight="57.0" prefWidth="221.0">
+         <children>
+            <Label text="Estado" />
+            <ComboBox prefHeight="25.0" prefWidth="233.0">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </ComboBox>
+         </children>
+      </VBox>
+      <VBox layoutX="385.0" layoutY="280.0" prefHeight="57.0" prefWidth="221.0">
+         <children>
+            <Label text="Municipio" />
+            <ComboBox prefHeight="25.0" prefWidth="233.0">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </ComboBox>
+         </children>
+      </VBox>
+      <VBox layoutX="385.0" layoutY="415.0" prefHeight="57.0" prefWidth="221.0">
+         <children>
+            <Label text="Email" />
+            <TextField>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </TextField>
+         </children>
+      </VBox>
+      <VBox layoutX="392.0" layoutY="356.0" prefHeight="57.0" prefWidth="221.0">
+         <children>
+            <Label text="Sexo" />
+            <ComboBox prefHeight="25.0" prefWidth="233.0">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </ComboBox>
+         </children>
+      </VBox>
+      <Button layoutX="425.0" layoutY="556.0" mnemonicParsing="false" text="Asistencia" />
+      <Button layoutX="517.0" layoutY="556.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="69.0" text="Crear" />
+   </children>
+</AnchorPane>

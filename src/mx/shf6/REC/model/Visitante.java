@@ -16,7 +16,8 @@ public class Visitante {
 	private StringProperty apellidoMaterno;
 	private StringProperty sexo;
 	private StringProperty numeroSeguroSocial;
-	private ObjectProperty<Date> fecha;
+	private ObjectProperty<Date> fechaNacimiento;
+	private ObjectProperty<Date> fechaRegistro;
 	private StringProperty tipoCredito;
 	private StringProperty estado;
 	private StringProperty municipio;
@@ -25,19 +26,20 @@ public class Visitante {
 	
 	//CONSTRUCTOR SIN PARAMETROS
 	public Visitante() {
-		this(0,"", "", "", "", "", null, "", "", "", "");
+		this(0,"", "", "", "", "", null, null, "", "", "", "");
 	}//FIN METODO
 	
 	//CONSTRUCTOR CON PARAMETROS
 	public Visitante(Integer sysPk, String nombre, String apellidoPaterno, String apellidoMaterno, String sexo, String numeroSocial, 
-			Date fecha, String tipoCredito, String estado, String municipio, String email) {
+			Date fechaNacimiento, Date fechaRegistro, String tipoCredito, String estado, String municipio, String email) {
 		this.sysPk = new SimpleObjectProperty<Integer>(sysPk);
 		this.nombre = new SimpleStringProperty(nombre);
 		this.apellidoPaterno = new SimpleStringProperty(apellidoPaterno);
 		this.apellidoMaterno = new SimpleStringProperty(apellidoMaterno);
 		this.sexo = new SimpleStringProperty(sexo);
 		this.numeroSeguroSocial = new SimpleStringProperty(numeroSocial);
-		this.fecha = new SimpleObjectProperty<Date>(fecha);
+		this.fechaNacimiento = new SimpleObjectProperty<Date>(fechaNacimiento);
+		this.fechaRegistro = new SimpleObjectProperty<Date>(fechaRegistro);
 		this.tipoCredito = new SimpleStringProperty(tipoCredito);
 		this.estado = new SimpleStringProperty(estado);
 		this.municipio = new SimpleStringProperty(municipio);
@@ -128,27 +130,44 @@ public class Visitante {
 	}//FIN METODO
 	//FIN METODOS "NUMERO SEGURO SOCIAL"
 	
-	//METODOS DE ACCESO A "FECHA"
-	public void setFecha(Date fecha) {
-		this.fecha.set(fecha);
+	//METODOS DE ACCESO A "FECHA NACIMIENTO"
+	public void setFechaNacimiento(Date fechaNacimiento) {
+		this.fechaNacimiento.set(fechaNacimiento);
 	}//FIN METODO
 		
-	public Date getFecha() {
-		if (this.fecha.get() == null)
+	public Date getFechaNacimiento() {
+		if (this.fechaNacimiento.get() == null)
 			return Date.valueOf("1999-01-01");
 		else
-			return this.fecha.get();
+			return this.fechaNacimiento.get();
 	}//FIN METODO
 		
-	public ObjectProperty<Date> fechaProperty() {
-		return this.fecha;
+	public ObjectProperty<Date> fechaNacimientoProperty() {
+		return this.fechaNacimiento;
 	}//FIN METODO
-	//FIN METODOS DE ACCESO
+	//FIN METODOS "FECHA NACIMIENTO"
+	
+	//METODOS DE ACCESO A "FECHA REGISTRO"
+	public void setFechaRegistro(Date fechaRegistro) {
+		this.fechaRegistro.set(fechaRegistro);
+	}//FIN METODO
+			
+	public Date getFechRegistro() {
+		if (this.fechaRegistro.get() == null)
+			return Date.valueOf("1999-01-01");
+		else
+			return this.fechaRegistro.get();
+	}//FIN METODO
+			
+	public ObjectProperty<Date> fechaRegistroProperty() {
+		return this.fechaRegistro;
+	}//FIN METODO
+	//FIN METODOS "FECHA REGISTRO"
 	
 	//METODOS PARA ACCESO A "TIPO CREDITO"
 	public void setTipoCredito(String tipoCredito) {
 		this.tipoCredito.set(tipoCredito);
-	}//FIN METODO
+	}//FIN METODOS 
 						
 	public String getTipoCredito() {
 		return this.tipoCredito.get();

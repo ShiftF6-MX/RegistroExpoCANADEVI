@@ -10,18 +10,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="bodyInicioSesion" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="bodyInicioSesion" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mx.shf6.REC.view.Busqueda">
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="404.0" prefWidth="604.0" styleClass="dashBoardCardGray" AnchorPane.leftAnchor="98.0" AnchorPane.topAnchor="155.0">
          <children>
             <HBox alignment="CENTER" layoutY="350.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                <children>
-                  <Button layoutX="425.0" layoutY="556.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="buttonBlue" text="ASISTENCIA" textFill="#ffffffd9">
+                  <Button fx:id="botonAsistencia" layoutX="425.0" layoutY="556.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="buttonBlue" text="ASISTENCIA" textFill="#ffffffd9">
                      <font>
                         <Font name="Open Sans Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button layoutX="517.0" layoutY="556.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="buttonGreen" text="REGISTRAR" textFill="#ffffffd9">
+                  <Button fx:id="botonRegistrar" layoutX="517.0" layoutY="556.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="buttonGreen" text="REGISTRAR" textFill="#ffffffd9">
                      <font>
                         <Font name="Open Sans Bold" size="12.0" />
                      </font>
@@ -37,8 +37,8 @@
                      <children>
                         <HBox>
                            <children>
-                              <TextField prefHeight="30.0" styleClass="textFieldSesion" HBox.hgrow="ALWAYS" />
-                              <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" styleClass="buttonYellow" text="BUSCAR">
+                              <TextField fx:id="campoBusqueda" prefHeight="30.0" styleClass="textFieldSesion" HBox.hgrow="ALWAYS" />
+                              <Button fx:id="botonBusqueda" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" styleClass="buttonYellow" text="BUSCAR">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
@@ -61,7 +61,7 @@
                                     <Font name="Open Sans Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <TextField prefHeight="30.0" styleClass="textFieldSesion">
+                              <TextField fx:id="campoNombres" prefHeight="30.0" styleClass="textFieldSesion">
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
@@ -75,7 +75,7 @@
                                     <Font name="Open Sans Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <TextField prefHeight="30.0" styleClass="textFieldSesion">
+                              <TextField fx:id="campoApellidoPaterno" prefHeight="30.0" styleClass="textFieldSesion">
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
@@ -89,7 +89,7 @@
                                     <Font name="Open Sans Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <TextField prefHeight="30.0" styleClass="textFieldSesion">
+                              <TextField fx:id="campoApellidoMaterno" prefHeight="30.0" styleClass="textFieldSesion">
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
@@ -103,7 +103,7 @@
                                     <Font name="Open Sans Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <TextField prefHeight="30.0" styleClass="textFieldSesion">
+                              <TextField fx:id="campoEmail" prefHeight="30.0" styleClass="textFieldSesion">
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
@@ -117,7 +117,7 @@
                                     <Font name="Open Sans Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <TextField prefHeight="30.0" styleClass="textFieldSesion">
+                              <TextField fx:id="campoNumeroSeguro" prefHeight="30.0" styleClass="textFieldSesion">
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
@@ -130,15 +130,32 @@
                      <children>
                         <VBox>
                            <children>
-                              <Label text="Fecha Nacimiento" textFill="#ffffffd9">
+                              <Label text="Sexo" textFill="#ffffffd9">
+                                 <font>
+                                    <Font name="Open Sans Bold" size="12.0" />
+                                 </font>
                                  <VBox.margin>
                                     <Insets top="40.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <ComboBox fx:id="sexoCombo" maxWidth="1.7976931348623157E308" prefHeight="30.0" styleClass="buttonYellow">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </ComboBox>
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Fecha Nacimiento" textFill="#ffffffd9">
+                                 <VBox.margin>
+                                    <Insets />
                                  </VBox.margin>
                                  <font>
                                     <Font name="Open Sans Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <DatePicker maxWidth="1.7976931348623157E308" prefHeight="30.0" styleClass="campoBuscador">
+                              <DatePicker fx:id="fechaNacimiento" maxWidth="1.7976931348623157E308" prefHeight="30.0" styleClass="campoBuscador">
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
@@ -152,7 +169,7 @@
                                     <Font name="Open Sans Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <ComboBox maxWidth="1.7976931348623157E308" prefHeight="30.0" styleClass="buttonYellow">
+                              <ComboBox fx:id="creditoCombo" maxWidth="1.7976931348623157E308" prefHeight="30.0" styleClass="buttonYellow">
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
@@ -166,7 +183,7 @@
                                     <Font name="Open Sans Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <ComboBox maxWidth="1.7976931348623157E308" prefHeight="30.0" styleClass="buttonYellow">
+                              <ComboBox fx:id="estadoCombo" maxWidth="1.7976931348623157E308" prefHeight="30.0" styleClass="buttonYellow">
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
@@ -180,21 +197,7 @@
                                     <Font name="Open Sans Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <ComboBox maxWidth="1.7976931348623157E308" prefHeight="30.0" styleClass="buttonYellow">
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </ComboBox>
-                           </children>
-                        </VBox>
-                        <VBox>
-                           <children>
-                              <Label text="Sexo" textFill="#ffffffd9">
-                                 <font>
-                                    <Font name="Open Sans Bold" size="12.0" />
-                                 </font>
-                              </Label>
-                              <ComboBox maxWidth="1.7976931348623157E308" prefHeight="30.0" styleClass="buttonYellow">
+                              <ComboBox fx:id="municipioCombo" maxWidth="1.7976931348623157E308" prefHeight="30.0" styleClass="buttonYellow">
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
@@ -215,7 +218,7 @@
             <Image url="@images/LogoExpo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="16.0" fitWidth="10.0" layoutX="77.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="16.0" fitWidth="10.0" layoutX="77.0" layoutY="87.0" onMouseClicked="#cerrarSistema" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/closeDialog.png" />
          </image>

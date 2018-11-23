@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import mx.shf6.REC.utilities.ConnectionDB;
 import mx.shf6.REC.utilities.Notificacion;
+import mx.shf6.REC.view.Busqueda;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -101,8 +102,8 @@ public class MainApp extends Application {
 			this.pantallaRaiz.setTop(null);
 			this.pantallaRaiz.setLeft(null);
 			
-			//Busqueda pantallaEspera = fxmlLoader.getController();
-			//pantallaEspera.setMainApp(this);
+			Busqueda pantallaEspera = fxmlLoader.getController();
+			pantallaEspera.setMainApp(this);
 		} catch (IOException | IllegalStateException ex) {
 			Notificacion.dialogoException(ex);
 		}//FIN TRY/CATCH
@@ -112,6 +113,15 @@ public class MainApp extends Application {
   	public Connection getConnection() {
   		return this.connection;
   	}//FIN METODO
+  	
+	@Override public void stop() {
+		System.out.println("Stage is closing...");
+		boolean opcion = Notificacion.dialogoPreguntar("Mensaje de CANADEVI", "Estas a punto de salir del sistema, ¿Realmente deseas cerrar esta herramienta?");
+		if (opcion) {
+			this.connectionDB.terminarConexion(connection);
+			System.exit(0);
+		}//FIN IF
+	}//END METODO
     
     public static void main(String[] args) {
         launch(args);

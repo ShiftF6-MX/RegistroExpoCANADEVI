@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import mx.shf6.REC.model.Visitante;
 import mx.shf6.REC.utilities.ConnectionDB;
 import mx.shf6.REC.utilities.LeerArchivo;
 import mx.shf6.REC.view.Busqueda;
@@ -27,7 +28,7 @@ public class MainApp extends Application {
     
       
 	//LISTA OOBSERVABLE PARA ALMACENAR A LOS USUARIOS
-    private ObservableList<Venta> ventaData = FXCollections.observableArrayList();
+    private ObservableList<Visitante> visitanteData = FXCollections.observableArrayList();
 
     //CONSTRUCTOR
     public MainApp() { 
@@ -97,9 +98,9 @@ public class MainApp extends Application {
   		return MainApp.mysqlConnection;
   	}//FIN METODO
     
-    //REGRESA LOS DATOS EN UNA LISTA OBSERVABLE DE USUARIOS
-    public ObservableList<Venta> getVentaData() {
-    	return ventaData;
+    //REGRESA LOS DATOS EN UNA LISTA OBSERVABLE DE LOS VISITANTES
+    public ObservableList<Visitante> getVisitanteData() {
+    	return visitanteData;
     }//FIN METODO
     
     public static void main(String[] args) {

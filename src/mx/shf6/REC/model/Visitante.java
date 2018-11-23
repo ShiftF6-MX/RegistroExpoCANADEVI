@@ -22,16 +22,16 @@ public class Visitante {
 	private StringProperty estado;
 	private StringProperty municipio;
 	private StringProperty email;
-	
+	private ObjectProperty<Integer> asistencia;
 	
 	//CONSTRUCTOR SIN PARAMETROS
 	public Visitante() {
-		this(0,"", "", "", "", "", null, null, "", "", "", "");
+		this(0,"", "", "", "", "", null, null, "", "", "", "", 0);
 	}//FIN METODO
 	
 	//CONSTRUCTOR CON PARAMETROS
 	public Visitante(Integer sysPk, String nombre, String apellidoPaterno, String apellidoMaterno, String sexo, String numeroSocial, 
-			Date fechaNacimiento, Date fechaRegistro, String tipoCredito, String estado, String municipio, String email) {
+			Date fechaNacimiento, Date fechaRegistro, String tipoCredito, String estado, String municipio, String email, int asistencia) {
 		this.sysPk = new SimpleObjectProperty<Integer>(sysPk);
 		this.nombre = new SimpleStringProperty(nombre);
 		this.apellidoPaterno = new SimpleStringProperty(apellidoPaterno);
@@ -44,6 +44,7 @@ public class Visitante {
 		this.estado = new SimpleStringProperty(estado);
 		this.municipio = new SimpleStringProperty(municipio);
 		this.email = new SimpleStringProperty(email);
+		this.asistencia = new SimpleObjectProperty<Integer>(asistencia);
 	}//FIN METODO
 	
 	//METODOS PARA ACCESO A "SYSPK"
@@ -152,7 +153,7 @@ public class Visitante {
 		this.fechaRegistro.set(fechaRegistro);
 	}//FIN METODO
 			
-	public Date getFechRegistro() {
+	public Date getFechaRegistro() {
 		if (this.fechaRegistro.get() == null)
 			return Date.valueOf("1999-01-01");
 		else
@@ -220,8 +221,22 @@ public class Visitante {
 	}//FIN METODO
 	//FIN METODOS "EMAIL"
 	
+	//METODOS PARA ACCESO A "ASISTENCIA"
+	public void setAsistencia(Integer asistencia) {
+		this.asistencia.set(asistencia);
+	}//FIN METODO
+		
+	public Integer getAsistencia() {
+		return this.asistencia.get();
+	}//FIN METODO
+		
+	public ObjectProperty<Integer> asistenciaProperty() {
+		return this.asistencia;
+	}//FIN METODO
+	//FIN METODOS "ASISTENCIA"
+	
 	public String showInformacion() {
-		String informacionVenta = "DATOS DEL CLIENTE:\n Sys_PK: " + this.getSysPk() + "\n"
+		String informacionVenta = "DATOS DEL Visitante:\n Sys_PK: " + this.getSysPk() + "\n"
 				+ "Nombre: " + this.getNombre();
 		return informacionVenta;
 	}//FIN METODO

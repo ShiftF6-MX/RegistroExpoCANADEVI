@@ -1,1 +1,277 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+/*PALETA DE COLORES:
+ * AMARILLO
+ * 		BASE: #F6B229
+ * 		DARK: #DFA121
+ * 		LIGHT:
+ * GRIS
+ * 		BASE: #585859
+ * 		DARK: #4E4E4F
+ * 		LIGHT: #676567
+ */
+ 
+ /* CSS PARA PANTALLA ESPERA */
+.bodyPantallaEspera {
+	-fx-background-color: transparent;
+}
+/* ------------------------------------- */
+
+/* CSS PARA INICIO SESION */
+.bodyInicioSesion {
+	-fx-background-color: transparent;
+	-fx-background-image: url("view/images/FondoExpo.png");
+	-fx-background-position: center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: cover;
+}
+.sesionPanelUno {
+	-fx-background-color: #2E3E4E;
+}
+.sesionPanelDos {
+	-fx-background-color: #FFFFFF;
+}
+.textFieldPanel {
+	-fx-background-color: #FFFFFF;
+	-fx-border-width: 0px 0px 1.5px 0px;
+	-fx-border-color: #585859;
+}
+.textFieldSesion {
+	-fx-background-color: #ffffff;
+	-fx-border-style: none;
+	-fx-border-width: 0px 0px 0px 0px;
+	-fx-border-radius: 0px 0px 0px 0px;
+	-fx-background-radius: 0px 0px 0px 0px;
+}
+/* ------------------------------------- */
+
+/* CSS PARA CAMPOS TEXTO */
+.campoBuscador {
+	-fx-background-color: #E6E6E6;
+	-fx-border-style: none;
+	-fx-border-width: 0px 0px 0px 0px;
+	-fx-border-radius: 0px 0px 0px 0px;
+	-fx-background-radius: 0px 0px 0px 0px;
+}
+/* ------------------------------------- */
+
+/* CSS PARA BOTONES */
+.buttonYellow {
+	-fx-background-color: #F6B229;
+	-fx-border-width: 1px 1px 1px 1px;
+	-fx-border-radius: 5px;
+	-fx-background-radius: 5px;
+}
+.buttonYellow:hover {
+	-fx-background-color: #E9AA28;
+}
+.buttonGreen {
+	-fx-background-color: #7AC943;
+	-fx-border-width: 1px 1px 1px 1px;
+	-fx-border-radius: 3px;
+	-fx-background-radius: 3px;
+}
+.buttonGreen:hover {
+	-fx-background-color: #73B23F;
+}
+.buttonBlue {
+	-fx-background-color: #3FA9F5;
+	-fx-border-width: 1px 1px 1px 1px;
+	-fx-border-radius: 3px;
+	-fx-background-radius: 3px;
+}
+.buttonBlue:hover {
+	-fx-background-color: #4E97C8;
+}
+.buttonRed {
+	-fx-background-color: #FF1D25;
+	-fx-border-width: 1px 1px 1px 1px;
+	-fx-border-radius: 3px;
+	-fx-background-radius: 3px;
+}
+.buttonRed:hover {
+	-fx-background-color: #D8282A;
+}
+/* ------------------------------------- */
+
+/* CSS PARA CABECERA */
+.headerAnchorPane {
+	-fx-background-color: #ffffff;
+}
+/* ------------------------------------- */
+
+/* CSS PARA ANCHOR PANE CONTENEDOR */
+.bodyAnchorPane {
+	-fx-background-color: #E6E6E6;
+}
+/* ------------------------------------- */
+
+/* CSS PARA MENU LATERAL */
+.menuAnchorPane {
+	-fx-background-color: #2E3E4E;
+}
+.menuLabel {
+	-fx-background-color: #2E3E4E;
+}
+.menuLabel:hover {
+	-fx-background-color: rgba(0,0,0,.065);
+}
+.menuSeparator *.line {
+	-fx-border-style: solid;
+	-fx-border-width: 1px;
+	-fx-border-color: #676567;
+}
+/* -------------------------- */
+
+/* CSS PARA TARJETAS DASHBOARD */
+.dashBoardAnchorPane {
+	-fx-background-color: #E6E6E6;
+}
+.dashBoardCard {
+	-fx-background-color: #FFFFFF;
+}
+.dashBoardCardGray {
+	-fx-background-color: #4D4D4D;
+}
+.dashBoardCardYellow {
+	-fx-background-color: #F6B229;
+}
+.imageEmpresa {
+	-fx-background-radius: 30px;
+	-fx-border-radius: 30px;
+}
+/* -------------------------- */
+
+/* CSS PARA TABLAS */
+.tablaDatos {
+	-fx-base: #FFFFFF;
+	-fx-control-inner-background: #FFFFFF;
+	-fx-background-color: #FFFFFF;
+}
+.tablaDatos .column-header-background {
+	-fx-background-color: transparent;
+}
+.tablaDatos .column-header, .tablaDatos .filler {
+	-fx-size: 35;
+	-fx-border-width: 2 0 0 0;
+	-fx-background-color: transparent;
+	-fx-border-color:
+		derive(#B3B3B3, 80%)
+		transparent
+		transparent
+		transparent;
+	-fx-border-insets: 0 0 0 0;
+}
+.tablaDatos .column-header .label {
+	-fx-font-size: 7pt;
+	-fx-font-family: "Roboto";
+	-fx-text-fill:   black;
+	-fx-alignment: center-left;
+	-fx-opacity: .87;
+}
+.tablaDatos .table-cell {
+	-fx-font-size: 7pt;
+	-fx-font-family: "Roboto";
+	-fx-text-fill:   black;
+	-fx-alignment: center-left;
+	-fx-opacity: .87;
+}
+.tablaDatos .table-row-cell:selected {
+	-fx-background-color: #F6B229;
+	-fx-background-insets: 0;
+}
+/* -------------------------- */
+
+/* CSS PARA TABLAS */
+.tablaDatosGestor {
+	-fx-base: #FFFFFF;
+	-fx-control-inner-background: #FFFFFF;
+	-fx-background-color: #FFFFFF;
+}
+.tablaDatosGestor .column-header-background {
+	-fx-background-color: transparent;
+}
+.tablaDatosGestor .column-header, .tablaDatos .filler {
+	-fx-border-width: 2 0 0 0;
+	-fx-background-color: transparent;
+	-fx-border-color:
+		derive(#B3B3B3, 80%)
+		transparent
+		transparent
+		transparent;
+	-fx-border-insets: 0 0 0 0;
+}
+.tablaDatosGestor .column-header .label {
+	-fx-alignment: center-left;
+	-fx-font-size: 12px;
+	-fx-font-family: "Roboto Medium";
+	-fx-text-fill:   black;
+	-fx-opacity: .87;
+}
+.tablaDatosGestor .table-cell {
+	-fx-alignment: center-left;
+	-fx-font-size: 12px;
+	-fx-font-family: "Roboto";
+	-fx-text-fill:   black;
+	-fx-opacity: .87;
+}
+.tablaDatosGestor .table-row-cell:selected {
+	-fx-background-color: #F6B229;
+	-fx-background-insets: 0;
+}
+/* -------------------------- */
+
+/* CSS PARA PAGINACION */
+.paginacionTabla {
+	-fx-page-information-visible: false;
+	-fx-tooltip-visible:false;
+}
+.paginacionTabla .pagination-control .button, .paginacionTabla .toggle-button {
+	-fx-background-color: white;
+	-fx-border-color: #B3B3B3;
+}
+.paginacionTabla .pagination-control .toggle-button:selected {
+	-fx-background-color: #F6B229;
+	-fx-text-fill: black;
+}
+.paginacionTabla .pagination-control .toggle-button:hover {
+	-fx-background-color: lightgray;
+}
+/* -------------------------- */
+
+/* CSS PARA TAB PANE */
+.panelPestana .tab-header-background {
+	-fx-background-color: white;
+	-fx-border-width: 0px 0px 2px 0px;
+	-fx-border-color: lightgray ;
+}
+.panelPestana .tab {
+	-fx-background-color: white;
+	-fx-border-width: 0px 0px 2px 0px;
+	-fx-border-color: lightgray ;
+	-fx-pref-height: 32px;
+	-fx-font-size: 12px;
+	-fx-font-family: "Roboto";
+	-fx-text-fill:   black;
+}
+.panelPestana .tab:selected {
+	-fx-background-color: white;
+	-fx-border-width: 0px 0px 2x 0px;
+	-fx-border-color: #F6B229;
+	-fx-pref-height: 32px;
+	-fx-focus-color: transparent;
+	-fx-font-family: "Roboto Medium";
+}
+.panelPestana .tab:hover {
+	-fx-background-color: white;
+	-fx-border-width: 0px 0px 2px 0px;
+	-fx-border-color: #DFA121;
+	-fx-pref-height: 32px;
+	-fx-focus-color: transparent;
+}
+.etiquetaDatosPerfil {
+	-fx-background-color: white;
+	-fx-border-width: 0px 0px 2px 0px;
+	-fx-border-color: lightgray;
+}
+/* -------------------------- */
